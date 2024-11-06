@@ -10,7 +10,9 @@ import { GenreModelMapper } from '../genre-model-mapper';
 
 describe('GenreModelMapper Unit Tests', () => {
   let categoryRepo: CategoryRepository;
-  setupSequelize({ models: [CategoryModel, GenreModel, GenreCategoryModel] });
+  setupSequelize({ 
+    models: [CategoryModel, GenreModel, GenreCategoryModel],
+   });
 
   beforeEach(() => {
     categoryRepo = new CategorySequelizeRepository(CategoryModel);

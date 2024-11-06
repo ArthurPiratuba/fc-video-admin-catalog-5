@@ -24,9 +24,7 @@ services:
     tmpfs:
       - /var/lib/mysql
     security_opt:
-      - seccomp:unconfined
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - seccomp:unconfined   
   
   video_admin_phpmyadmin:
     container_name: video_admin_phpmyadmin

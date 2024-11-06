@@ -1,16 +1,16 @@
-import { ICategoryRepository } from '../../../../category/domain/category.repository';
-import { IUseCase } from '../../../../shared/application/use-case.interface';
+import { CategoryRepository } from '../../../../category/domain/category.repository';
+import { UseCase } from '../../../../shared/application/use-case.interface';
 import { NotFoundError } from '../../../../shared/domain/errors/not-found.error';
 import { Genre, GenreId } from '../../../domain/genre.aggregate';
 import { IGenreRepository } from '../../../domain/genre.repository';
 import { GenreOutput, GenreOutputMapper } from '../common/genre-output';
 
 export class GetGenreUseCase
-  implements IUseCase<GetGenreInput, GetGenreOutput>
+  implements UseCase<GetGenreInput, GetGenreOutput>
 {
   constructor(
     private genreRepo: IGenreRepository,
-    private categoryRepo: ICategoryRepository,
+    private categoryRepo: CategoryRepository,
   ) {}
 
   async execute(input: GetGenreInput): Promise<GetGenreOutput> {

@@ -16,6 +16,7 @@ import { GenreSequelizeRepository } from '../genre-sequelize.repository';
 describe('GenreSequelizeRepository Integration Tests', () => {
   const sequelizeHelper = setupSequelize({
     models: [GenreModel, GenreCategoryModel, CategoryModel],
+    logging: false
   });
   let uow: UnitOfWorkSequelize;
   let genreRepo: GenreSequelizeRepository;

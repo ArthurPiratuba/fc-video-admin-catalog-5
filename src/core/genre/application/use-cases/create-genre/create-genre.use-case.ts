@@ -1,19 +1,19 @@
-import { CategoriesIdExistsInDatabaseValidator } from '../../../../category/application/validations/categories-ids-exists-in-database.validator';
-import { ICategoryRepository } from '../../../../category/domain/category.repository';
-import { IUseCase } from '../../../../shared/application/use-case.interface';
+import { UseCase } from '@core/shared/application/use-case.interface';
 import { IUnitOfWork } from '../../../../shared/domain/repository/unit-of-work.interface';
 import { EntityValidationError } from '../../../../shared/domain/validators/validation.error';
 import { Genre } from '../../../domain/genre.aggregate';
 import { IGenreRepository } from '../../../domain/genre.repository';
 import { GenreOutput, GenreOutputMapper } from '../common/genre-output';
 import { CreateGenreInput } from './create-genre.input';
+import { CategoryRepository } from '@core/category/domain/category.repository';
+import { CategoriesIdExistsInDatabaseValidator } from '@core/category/application/validators/categories-ids-exists-in-database.validator';
 
 export class CreateGenreUseCase
-    implements IUseCase<CreateGenreInput, CreateGenreOutput> {
+    implements UseCase<CreateGenreInput, CreateGenreOutput> {
     constructor(
         private uow: IUnitOfWork,
         private genreRepo: IGenreRepository,
-        private categoryRepo: ICategoryRepository,
+        private categoryRepo: CategoryRepository,
         private categoriesIdExistsInStorage: CategoriesIdExistsInDatabaseValidator,
     ) { }
 

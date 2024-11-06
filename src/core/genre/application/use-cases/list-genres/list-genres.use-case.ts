@@ -8,16 +8,16 @@ import {
   GenreSearchParams,
   GenreSearchResult,
 } from '../../../domain/genre.repository';
-import { ICategoryRepository } from '../../../../category/domain/category.repository';
+import { CategoryRepository } from '../../../../category/domain/category.repository';
 import { ListGenresInput } from './list-genres.input';
-import { IUseCase } from '../../../../shared/application/use-case.interface';
+import { UseCase } from '../../../../shared/application/use-case.interface';
 import { CategoryId } from '../../../../category/domain/category.aggregate';
 
 export class ListGenresUseCase
-  implements IUseCase<ListGenresInput, ListGenresOutput> {
+  implements UseCase<ListGenresInput, ListGenresOutput> {
   constructor(
     private genreRepo: IGenreRepository,
-    private categoryRepo: ICategoryRepository,
+    private categoryRepo: CategoryRepository,
   ) { }
 
   async execute(input: ListGenresInput): Promise<ListGenresOutput> {
