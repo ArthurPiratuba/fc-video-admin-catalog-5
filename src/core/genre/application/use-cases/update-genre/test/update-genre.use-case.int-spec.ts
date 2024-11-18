@@ -10,7 +10,7 @@ import {
   import { CategorySequelizeRepository } from '../../../../../category/infra/db/sequelize/category-sequelize.repository';
   import { CategoryModel } from '../../../../../category/infra/db/sequelize/category.model';
 import { GenreSequelizeRepository } from '@core/genre/infra/db/sequelize/genre-sequelize.repository';
-import { CategoriesIdExistsInDatabaseValidator } from '@core/category/application/validators/categories-ids-exists-in-database.validator';
+import { CategoriesIdExistsInStorageValidator } from '@core/category/application/validators/categories-ids-exists-in-storage.validator';
 import { GenreCategoryModel, GenreModel } from '@core/genre/infra/db/sequelize/genre-model';
   
   describe('UpdateGenreUseCase Integration Tests', () => {
@@ -18,7 +18,7 @@ import { GenreCategoryModel, GenreModel } from '@core/genre/infra/db/sequelize/g
     let useCase: UpdateGenreUseCase;
     let genreRepo: GenreSequelizeRepository;
     let categoryRepo: CategorySequelizeRepository;
-    let categoriesIdsExistsInStorageValidator: CategoriesIdExistsInDatabaseValidator;
+    let categoriesIdsExistsInStorageValidator: CategoriesIdExistsInStorageValidator;
   
     const sequelizeHelper = setupSequelize({
       models: [GenreModel, GenreCategoryModel, CategoryModel],
@@ -29,7 +29,7 @@ import { GenreCategoryModel, GenreModel } from '@core/genre/infra/db/sequelize/g
       genreRepo = new GenreSequelizeRepository(GenreModel, uow);
       categoryRepo = new CategorySequelizeRepository(CategoryModel);
       categoriesIdsExistsInStorageValidator =
-        new CategoriesIdExistsInDatabaseValidator(categoryRepo);
+        new CategoriesIdExistsInStorageValidator(categoryRepo);
       useCase = new UpdateGenreUseCase(
         uow,
         genreRepo,

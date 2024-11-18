@@ -2,14 +2,14 @@ import { CategoryRepository } from '../../../../category/domain/category.reposit
 import { UseCase } from '../../../../shared/application/use-case.interface';
 import { NotFoundError } from '../../../../shared/domain/errors/not-found.error';
 import { Genre, GenreId } from '../../../domain/genre.aggregate';
-import { IGenreRepository } from '../../../domain/genre.repository';
+import { GenreRepository } from '../../../domain/genre.repository';
 import { GenreOutput, GenreOutputMapper } from '../common/genre-output';
 
 export class GetGenreUseCase
   implements UseCase<GetGenreInput, GetGenreOutput>
 {
   constructor(
-    private genreRepo: IGenreRepository,
+    private genreRepo: GenreRepository,
     private categoryRepo: CategoryRepository,
   ) {}
 

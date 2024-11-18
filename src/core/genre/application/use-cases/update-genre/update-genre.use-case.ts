@@ -1,11 +1,11 @@
-import { CategoriesIdExistsInDatabaseValidator } from '@core/category/application/validators/categories-ids-exists-in-database.validator';
+import { CategoriesIdExistsInStorageValidator } from '@core/category/application/validators/categories-ids-exists-in-storage.validator';
 import { CategoryRepository } from '../../../../category/domain/category.repository';
 import { UseCase } from '../../../../shared/application/use-case.interface';
 import { NotFoundError } from '../../../../shared/domain/errors/not-found.error';
 import { IUnitOfWork } from '../../../../shared/domain/repository/unit-of-work.interface';
 import { EntityValidationError } from '../../../../shared/domain/validators/validation.error';
 import { Genre, GenreId } from '../../../domain/genre.aggregate';
-import { IGenreRepository } from '../../../domain/genre.repository';
+import { GenreRepository } from '../../../domain/genre.repository';
 import { GenreOutput, GenreOutputMapper } from '../common/genre-output';
 import { UpdateGenreInput } from './update-genre.input';
 
@@ -13,9 +13,9 @@ export class UpdateGenreUseCase
     implements UseCase<UpdateGenreInput, UpdateGenreOutput> {
     constructor(
         private uow: IUnitOfWork,
-        private genreRepo: IGenreRepository,
+        private genreRepo: GenreRepository,
         private categoryRepo: CategoryRepository,
-        private categoriesIdExistsInStorageValidator: CategoriesIdExistsInDatabaseValidator,
+        private categoriesIdExistsInStorageValidator: CategoriesIdExistsInStorageValidator,
     ) { }
 
     async execute(input: UpdateGenreInput): Promise<UpdateGenreOutput> {

@@ -1,14 +1,14 @@
 import { CategoryInMemoryRepository } from "@core/category/infra/db/in-memory/category-in-memory.repository";
-import { CategoriesIdExistsInDatabaseValidator } from "./categories-ids-exists-in-database.validator";
 import { NotFoundError } from "@core/shared/domain/errors/not-found.error";
 import { Category, CategoryId } from "@core/category/domain/category.aggregate";
+import { CategoriesIdExistsInStorageValidator } from "./categories-ids-exists-in-storage.validator";
 
-describe('CategoriesIdExistsInDatabaseValidator Unit Tests', () => {
+describe('CategoriesIdExistsInStorageValidator Unit Tests', () => {
     let categoryRepo: CategoryInMemoryRepository;
-    let validator: CategoriesIdExistsInDatabaseValidator;
+    let validator: CategoriesIdExistsInStorageValidator;
     beforeEach(() => {
         categoryRepo = new CategoryInMemoryRepository();
-        validator = new CategoriesIdExistsInDatabaseValidator(categoryRepo);
+        validator = new CategoriesIdExistsInStorageValidator(categoryRepo);
     });
 
     it('should return many not found error when categories id is not exists in storage', async () => {

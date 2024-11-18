@@ -4,7 +4,7 @@ import { Genre, GenreId } from '../../../domain/genre.aggregate';
 import {
     GenreSearchParams,
     GenreSearchResult,
-    IGenreRepository,
+    GenreRepository,
 } from '../../../domain/genre.repository';
 import { GenreModel } from './genre-model';
 import { GenreModelMapper } from './genre-model-mapper';
@@ -12,7 +12,7 @@ import { InvalidArgumentError } from '../../../../shared/domain/errors/invalid-a
 import { NotFoundError } from '../../../../shared/domain/errors/not-found.error';
 import { UnitOfWorkSequelize } from '../../../../shared/infra/db/sequelize/unit-of-work-sequelize';
 
-export class GenreSequelizeRepository implements IGenreRepository {
+export class GenreSequelizeRepository implements GenreRepository {
     sortableFields: string[] = ['name', 'created_at'];
     orderBy = {
         mysql: {

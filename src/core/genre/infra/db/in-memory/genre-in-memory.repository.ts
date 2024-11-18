@@ -1,6 +1,6 @@
 import { Genre, GenreId } from '../../../domain/genre.aggregate';
 import {
-    IGenreRepository,
+    GenreRepository,
     GenreFilter,
 } from '../../../domain/genre.repository';
 import { SortDirection } from '../../../../shared/domain/repository/search-params';
@@ -8,7 +8,7 @@ import { InMemorySearchableRepository } from '../../../../shared/infra/db/in-mem
 
 export class GenreInMemoryRepository
     extends InMemorySearchableRepository<Genre, GenreId, GenreFilter>
-    implements IGenreRepository {
+    implements GenreRepository {
     sortableFields: string[] = ['name', 'created_at'];
 
     getEntity(): new (...args: any[]) => Genre {

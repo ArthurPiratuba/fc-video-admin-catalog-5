@@ -1,10 +1,10 @@
 import { Either } from '../../../shared/domain/either';
 import { NotFoundError } from '../../../shared/domain/errors/not-found.error';
 import { Genre, GenreId } from '../../domain/genre.aggregate';
-import { IGenreRepository } from '../../domain/genre.repository';
+import { GenreRepository } from '../../domain/genre.repository';
 
 export class GenresIdExistsInDatabaseValidator {
-    constructor(private genreRepo: IGenreRepository) { }
+    constructor(private genreRepo: GenreRepository) { }
 
     async validate(
         genres_id: string[],

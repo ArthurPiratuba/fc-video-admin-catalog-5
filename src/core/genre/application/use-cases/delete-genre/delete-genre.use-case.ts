@@ -1,13 +1,13 @@
 import { UseCase } from '../../../../shared/application/use-case.interface';
 import { IUnitOfWork } from '../../../../shared/domain/repository/unit-of-work.interface';
 import { GenreId } from '../../../domain/genre.aggregate';
-import { IGenreRepository } from '../../../domain/genre.repository';
+import { GenreRepository } from '../../../domain/genre.repository';
 
 export class DeleteGenreUseCase
     implements UseCase<DeleteGenreInput, DeleteGenreOutput> {
     constructor(
         private uow: IUnitOfWork,
-        private genreRepo: IGenreRepository,
+        private genreRepo: GenreRepository,
     ) { }
 
     async execute(input: DeleteGenreInput): Promise<DeleteGenreOutput> {

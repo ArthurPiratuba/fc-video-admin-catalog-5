@@ -62,7 +62,7 @@ export class GenreSearchParams extends SearchParams<GenreFilter> {
 
 export class GenreSearchResult extends SearchResult<Genre> { }
 
-export interface IGenreRepository
+export interface GenreRepository
     extends SearchableRepository<
         Genre,
         GenreId,

@@ -2,19 +2,19 @@ import { UseCase } from '@core/shared/application/use-case.interface';
 import { IUnitOfWork } from '../../../../shared/domain/repository/unit-of-work.interface';
 import { EntityValidationError } from '../../../../shared/domain/validators/validation.error';
 import { Genre } from '../../../domain/genre.aggregate';
-import { IGenreRepository } from '../../../domain/genre.repository';
+import { GenreRepository } from '../../../domain/genre.repository';
 import { GenreOutput, GenreOutputMapper } from '../common/genre-output';
 import { CreateGenreInput } from './create-genre.input';
 import { CategoryRepository } from '@core/category/domain/category.repository';
-import { CategoriesIdExistsInDatabaseValidator } from '@core/category/application/validators/categories-ids-exists-in-database.validator';
+import { CategoriesIdExistsInStorageValidator } from '@core/category/application/validators/categories-ids-exists-in-storage.validator';
 
 export class CreateGenreUseCase
     implements UseCase<CreateGenreInput, CreateGenreOutput> {
     constructor(
         private uow: IUnitOfWork,
-        private genreRepo: IGenreRepository,
+        private genreRepo: GenreRepository,
         private categoryRepo: CategoryRepository,
-        private categoriesIdExistsInStorage: CategoriesIdExistsInDatabaseValidator,
+        private categoriesIdExistsInStorage: CategoriesIdExistsInStorageValidator,
     ) { }
 
     async execute(input: CreateGenreInput): Promise<CreateGenreOutput> {

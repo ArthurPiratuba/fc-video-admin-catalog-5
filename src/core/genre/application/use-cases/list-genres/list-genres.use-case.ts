@@ -4,7 +4,7 @@ import {
   PaginationOutputMapper,
 } from '../../../../shared/application/pagination-output';
 import {
-  IGenreRepository,
+  GenreRepository,
   GenreSearchParams,
   GenreSearchResult,
 } from '../../../domain/genre.repository';
@@ -16,7 +16,7 @@ import { CategoryId } from '../../../../category/domain/category.aggregate';
 export class ListGenresUseCase
   implements UseCase<ListGenresInput, ListGenresOutput> {
   constructor(
-    private genreRepo: IGenreRepository,
+    private genreRepo: GenreRepository,
     private categoryRepo: CategoryRepository,
   ) { }
 

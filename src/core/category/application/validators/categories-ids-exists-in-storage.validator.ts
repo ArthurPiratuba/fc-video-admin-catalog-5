@@ -3,7 +3,7 @@ import { CategoryRepository } from "@core/category/domain/category.repository";
 import { Either } from "@core/shared/domain/either";
 import { NotFoundError } from "@core/shared/domain/errors/not-found.error";
 
-export class CategoriesIdExistsInDatabaseValidator {
+export class CategoriesIdExistsInStorageValidator {
     constructor(private categoryRepo: CategoryRepository) { }
 
     async validate(
