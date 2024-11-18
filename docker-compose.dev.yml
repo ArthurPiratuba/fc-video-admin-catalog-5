@@ -9,30 +9,30 @@ services:
     ports:
       - 15101:3000
     volumes:
-      - .:/home/node/app   
+      - .:/home/node/app:cached 
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-  video_admin_db:
-    container_name: video_admin_db
-    image: mysql:8.0.30-debian
-    environment:
-      - MYSQL_DATABASE=micro_videos
-      - MYSQL_ROOT_PASSWORD=root
-    # volumes:
-    #   - ./.docker/dbdata:/var/lib/mysql:delegated
-    tmpfs:
-      - /var/lib/mysql
-    security_opt:
-      - seccomp:unconfined   
+  # video_admin_db:
+  #   container_name: video_admin_db
+  #   image: mysql:8.0.30-debian
+  #   environment:
+  #     - MYSQL_DATABASE=micro_videos
+  #     - MYSQL_ROOT_PASSWORD=root
+  #   # volumes:
+  #   #   - ./.docker/dbdata:/var/lib/mysql:delegated
+  #   tmpfs:
+  #     - /var/lib/mysql
+  #   security_opt:
+  #     - seccomp:unconfined   
   
-  video_admin_phpmyadmin:
-    container_name: video_admin_phpmyadmin
-    image: phpmyadmin/phpmyadmin:latest
-    ports:
-      - "15103:80"                          
-    environment:
-      PMA_HOST: video_admin_db                         
-      MYSQL_ROOT_PASSWORD: root         
-    depends_on:
-      - video_admin_db
+  # video_admin_phpmyadmin:
+  #   container_name: video_admin_phpmyadmin
+  #   image: phpmyadmin/phpmyadmin:latest
+  #   ports:
+  #     - "15103:80"                          
+  #   environment:
+  #     PMA_HOST: video_admin_db                         
+  #     MYSQL_ROOT_PASSWORD: root         
+  #   depends_on:
+  #     - video_admin_db
